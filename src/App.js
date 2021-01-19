@@ -1,9 +1,12 @@
 import './App.css';
-import UserList from './UserList'
+import UserList from './UserList';
 
 function App() {
   return (
-    <UserList/>
+    <div>
+      <UserList/>
+      <Route exact path={`/`} render={ (routerProps) => < Home routerProps={routerProps} setUpGame={this.setUpGame} />} />
+    </div>
   );
 }
 
