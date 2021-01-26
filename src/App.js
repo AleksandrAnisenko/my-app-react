@@ -1,10 +1,12 @@
-import './App.css';
-import UserList from './UserList';
-
+import UserList from "./default module/components/UserList.js";
+import SimpleTabs from "./default module/components/TabsComponent.js";
 
 function App() {
   return (
-      <UserList/>
+    <div>
+      <UserList />;
+      <SimpleTabs />;
+    </div>
   );
 }
 
