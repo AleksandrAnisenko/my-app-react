@@ -6,16 +6,18 @@ class MultiplicationDivisionContainer extends Component {
     super(props);
 
     this.state = {
-      count: 4,
+      count: sessionStorage.getItem("countMulti") || 4,
     };
   }
 
   incrementCount = () => {
     this.setState({ count: this.state.count * 4 });
+    sessionStorage.setItem("countMulti", this.state.count * 4);
   };
 
   decrementCount = () => {
     this.setState({ count: this.state.count / 4 });
+    sessionStorage.setItem("countMulti", this.state.count * 4);
   };
 
   render() {

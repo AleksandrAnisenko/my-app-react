@@ -6,16 +6,19 @@ class AdditionSubtractionContainer extends Component {
     super(props);
 
     this.state = {
-      count: 1,
+      count: sessionStorage.getItem("count") || 1,
     };
   }
 
   incrementCount = () => {
-    this.setState({ count: this.state.count + 1 });
+    console.log(this.state.count);
+    this.setState({ count: +this.state.count + 1 });
+    sessionStorage.setItem("count", this.state.count + 1);
   };
 
   decrementCount = () => {
-    this.setState({ count: this.state.count - 1 });
+    this.setState({ count: +this.state.count - 1 });
+    sessionStorage.setItem("count", this.state.count - 1);
   };
 
   render() {
