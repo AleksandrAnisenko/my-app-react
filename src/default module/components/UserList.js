@@ -1,13 +1,12 @@
-import USER from "./User.js";
-import { USERLIST } from "../helpers/constants.js";
-import "../../App.css";
+import User from "./User.js";
+import { Userlist } from "../helpers/constants.js";
 
 const UserList = () => {
   return (
     <div className="App">
       <div>
-        {USERLIST.map((x) => {
-          return <USER name={x.name} />;
+        {Userlist.map((x) => {
+          return <User name={x.name} />;
         })}
       </div>
     </div>

@@ -1,6 +1,4 @@
-import "../../App.css";
-
-const USER = ({ name }) => {
+const User = ({ name }) => {
   return (
     <div>
       <span>It's user {name}</span>
@@ -8,4 +6,4 @@ const USER = ({ name }) => {
   );
 };
 
-export default USER;
+export default User;

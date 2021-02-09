@@ -4,12 +4,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
-import AdditionSubtractionContainer from "../containers/AdditionSubtractionContainer.js";
-import MultiplicationDivisionContainer from "../containers/MultiplicationDivisionContainer.js";
-import WordGeneratorContainer from "../containers/WordGeneratorContainer.js";
+import AdditionSubtraction from "./AdditionSubtraction";
+import MultiplicationDivision from "./MultiplicationDivision";
+import WordGenerator from "./WordGenerator";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -24,7 +23,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <div>{children}</div>
         </Box>
       )}
     </div>
@@ -51,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleTabs() {
+export default function SimpleTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -66,20 +65,34 @@ export default function SimpleTabs() {
           value={value}
           onChange={handleChange}
           aria-label="simple tabs example"
+          centered
         >
-          <Tab label="Addition/Subtraction" {...a11yProps(0)} />
-          <Tab label="Multiplication/division" {...a11yProps(1)} />
-          <Tab label="Random words" {...a11yProps(2)} />
+          <Tab label="Additionn/Substraction" {...a11yProps(0)} />
+          <Tab label="Multiplication/Division" {...a11yProps(1)} />
+          <Tab label="Генерация слов" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
+
       <TabPanel value={value} index={0}>
-        <AdditionSubtractionContainer />
+        <AdditionSubtraction
+          addCount={props.addCount}
+          funcIncrease={props.funcIncrease}
+          funcDecrease={props.funcDecrease}
+        />
       </TabPanel>
+
       <TabPanel value={value} index={1}>
-        <MultiplicationDivisionContainer />
+        <MultiplicationDivision
+          multiCount={props.multiCount}
+          multiFunc={props.multiFunc}
+          divfunc={props.divfunc}
+        />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <WordGeneratorContainer />
+        <WordGenerator
+          generatedWord={props.word}
+          funcGeneration={props.funcGeneration}
+        />
       </TabPanel>
     </div>
   );
